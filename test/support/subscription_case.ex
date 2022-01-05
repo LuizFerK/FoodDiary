@@ -9,7 +9,7 @@ defmodule FoodDiaryWeb.SubscriptionCase do
       import Phoenix.ChannelTest
       import FoodDiaryWeb.ChannelCase
 
-      use SubscriptionTest, schea: FoodDiaryWeb.Schema
+      use SubscriptionTest, schema: FoodDiaryWeb.Schema
 
       # The default endpoint for testing
       @endpoint FoodDiaryWeb.Endpoint
