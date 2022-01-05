@@ -4,9 +4,11 @@ defmodule FoodDiaryWeb.Resolvers.Meal do
   alias FoodDiaryWeb.Endpoint
 
   def create(%{input: params}, _context) do
-    {:ok, meal} = Create.call(params)
-    Subscription.publish(Endpoint, meal, new_meal: "new_meal_topic")
-
-    {:ok, meal}
+    with {:ok, meal} <- Create.call(params) do
+      Subscription.publish(Endpoint, meal, new_meal: "new_meal_topic")
+      {:ok, meal}
+    else
+      error -> error
+    end
   end
 end
