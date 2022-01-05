@@ -47,6 +47,15 @@ defmodule FoodDiaryWeb.Schema.Types.Root do
       config fn _args, _info ->
         {:ok, topic: "new_meal_topic"}
       end
+
+      trigger :create_meal,
+        topic: fn _ -> ["new_meal_topic"] end
     end
+
+    # field :new_meal, type: :meal do
+    #   config fn _args, _info ->
+    #     {:ok, topic: "new_meal_topic"}
+    #   end
+    # end
   end
 end
